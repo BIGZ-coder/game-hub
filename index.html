@@ -1,20 +1,294 @@
-<a class="card" href="https://www.friv.com/" target="_blank">
-<div class="emoji">⭐</div>Friv
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BigZ Arcade</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #080b16;
+  color: white;
+}
+
+/* TOP BAR */
+header {
+  background: linear-gradient(135deg, #111936, #21104a);
+  padding: 25px;
+  border-bottom: 2px solid #343b67;
+}
+
+.logo {
+  font-size: 34px;
+  font-weight: 900;
+}
+
+.logo span {
+  color: #7c6cff;
+}
+
+.subtitle {
+  color: #aeb6d8;
+  margin-top: 5px;
+}
+
+/* SEARCH */
+.search {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 650px;
+  padding: 15px 20px;
+  border-radius: 14px;
+  border: 1px solid #343b67;
+  background: #11162a;
+  color: white;
+  font-size: 16px;
+  outline: none;
+}
+
+/* NAVIGATION */
+nav {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+nav button {
+  border: 0;
+  padding: 11px 18px;
+  border-radius: 12px;
+  background: #252c4d;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+nav button:hover {
+  background: #3a4370;
+}
+
+/* MAIN */
+main {
+  max-width: 1150px;
+  margin: auto;
+  padding: 30px 20px;
+}
+
+.section-title {
+  font-size: 26px;
+  margin-bottom: 18px;
+}
+
+/* FEATURE */
+.feature {
+  background: linear-gradient(135deg, #30246b, #172a58);
+  border-radius: 22px;
+  padding: 30px;
+  margin-bottom: 35px;
+  box-shadow: 0 10px 40px #0006;
+}
+
+.feature h2 {
+  font-size: 30px;
+  margin: 0 0 10px;
+}
+
+.feature p {
+  color: #c5cae8;
+}
+
+.play {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 13px 22px;
+  border-radius: 12px;
+  background: white;
+  color: #111;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* GAME GRID */
+.games {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 18px;
+}
+
+.game {
+  background: #151a2d;
+  border: 1px solid #292f4c;
+  border-radius: 18px;
+  padding: 20px;
+  text-decoration: none;
+  color: white;
+  transition: .2s;
+}
+
+.game:hover {
+  transform: translateY(-5px);
+  border-color: #7771ff;
+  box-shadow: 0 10px 30px #0008;
+}
+
+.icon {
+  font-size: 50px;
+  margin-bottom: 12px;
+}
+
+.game h3 {
+  margin: 0 0 7px;
+}
+
+.game p {
+  margin: 0;
+  color: #9da6c9;
+  font-size: 14px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 35px;
+  color: #737b9d;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">🎮 BIGZ <span>ARCADE</span></div>
+<div class="subtitle">Your gaming zone</div>
+
+<input
+  class="search"
+  id="search"
+  placeholder="🔎 Search games..."
+  oninput="searchGames()"
+>
+
+<nav>
+<button onclick="showAll()">🏠 Home</button>
+<button onclick="filterCategory('game')">🎮 Games</button>
+<button onclick="window.open('https://www.youtube.com/','_blank')">
+▶️ YouTube
+</button>
+</nav>
+
+</header>
+
+<main>
+
+<!-- FEATURED -->
+<div class="feature">
+<h2>🔥 Featured</h2>
+<p>Jump into some games and explore the arcade.</p>
+
+<a
+class="play"
+href="https://www.crazygames.com/"
+target="_blank">
+PLAY NOW →
+</a>
+</div>
+
+<h2 class="section-title">🎮 Game Zone</h2>
+
+<div class="games" id="games">
+
+<a class="game" href="https://www.crazygames.com/" target="_blank">
+<div class="icon">🎮</div>
+<h3>CrazyGames</h3>
+<p>Hundreds of browser games</p>
 </a>
 
-<a class="card" href="https://www.youtube.com/" target="_blank">
-<div class="emoji">▶️</div>YouTube
+<a class="game" href="https://poki.com/" target="_blank">
+<div class="icon">🕹️</div>
+<h3>Poki</h3>
+<p>Play games instantly</p>
+</a>
+
+<a class="game" href="https://www.coolmathgames.com/" target="_blank">
+<div class="icon">🧠</div>
+<h3>Coolmath Games</h3>
+<p>Puzzles and arcade games</p>
+</a>
+
+<a class="game" href="https://www.friv.com/" target="_blank">
+<div class="icon">⭐</div>
+<h3>Friv</h3>
+<p>Classic browser games</p>
+</a>
+
+<a class="game" href="https://www.google.com/search?q=browser+games" target="_blank">
+<div class="icon">🔎</div>
+<h3>Find Games</h3>
+<p>Search for more games</p>
+</a>
+
+<a class="game" href="https://www.youtube.com/" target="_blank">
+<div class="icon">▶️</div>
+<h3>YouTube</h3>
+<p>Watch videos</p>
 </a>
 
 </div>
 
+</main>
+
+<footer>
+BIGZ ARCADE • Have fun 🎮
+</footer>
+
 <script>
-function searchGames(){
-let x=document.getElementById("search").value.toLowerCase();
-document.querySelectorAll(".card").forEach(c=>{
-c.style.display=c.innerText.toLowerCase().includes(x)?"block":"none";
-});
+
+function searchGames() {
+
+  let search =
+    document.getElementById("search")
+    .value
+    .toLowerCase();
+
+  document
+    .querySelectorAll(".game")
+    .forEach(game => {
+
+      let text =
+        game.innerText.toLowerCase();
+
+      game.style.display =
+        text.includes(search)
+        ? "block"
+        : "none";
+
+    });
 }
+
+function showAll() {
+
+  document
+    .querySelectorAll(".game")
+    .forEach(game => {
+      game.style.display = "block";
+    });
+
+  document.getElementById("search").value = "";
+}
+
+function filterCategory(category) {
+  showAll();
+}
+
 </script>
 
 </body>
