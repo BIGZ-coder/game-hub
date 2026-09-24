@@ -1,0 +1,21 @@
+<a class="card" href="https://www.friv.com/" target="_blank">
+<div class="emoji">⭐</div>Friv
+</a>
+
+<a class="card" href="https://www.youtube.com/" target="_blank">
+<div class="emoji">▶️</div>YouTube
+</a>
+
+</div>
+
+<script>
+function searchGames(){
+let x=document.getElementById("search").value.toLowerCase();
+document.querySelectorAll(".card").forEach(c=>{
+c.style.display=c.innerText.toLowerCase().includes(x)?"block":"none";
+});
+}
+</script>
+
+</body>
+</html>
