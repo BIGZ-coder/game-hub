@@ -1,177 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>BIGZ ARCADE</title>
 
 <style>
-* {
-  box-sizing: border-box;
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#080b16;
+  color:white;
 }
-
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #070914;
-  color: white;
+header{
+  padding:25px;
+  background:linear-gradient(135deg,#171d45,#35145c);
+  text-align:center;
 }
-
-/* HEADER */
-header {
-  background: linear-gradient(135deg, #121936, #32145c);
-  padding: 30px 25px;
-  border-bottom: 2px solid #3c4675;
+h1{font-size:42px;margin:5px}
+.subtitle{color:#b9c1df}
+button{
+  border:0;
+  border-radius:12px;
+  padding:12px 18px;
+  margin:5px;
+  background:#5865f2;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
 }
-
-.logo {
-  font-size: 42px;
-  font-weight: 900;
+button:hover{background:#737df5}
+#games{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:18px;
+  max-width:1000px;
+  margin:30px auto;
+  padding:20px;
 }
-
-.logo span {
-  color: #8b7cff;
+.card{
+  background:#181e35;
+  padding:25px;
+  border-radius:18px;
+  text-align:center;
+  cursor:pointer;
+  border:1px solid #30385c;
 }
-
-.subtitle {
-  color: #aeb7dc;
-  margin-top: 6px;
-  font-size: 17px;
+.card:hover{
+  transform:translateY(-5px);
+  border-color:#7c75ff;
 }
-
-/* SEARCH */
-.search {
-  margin-top: 22px;
-  width: 100%;
-  max-width: 700px;
-  padding: 16px 20px;
-  border-radius: 14px;
-  border: 1px solid #394266;
-  background: #10152a;
-  color: white;
-  font-size: 16px;
-  outline: none;
+.icon{font-size:50px}
+#gameScreen{
+  display:none;
+  max-width:900px;
+  margin:25px auto;
+  padding:20px;
+  text-align:center;
 }
-
-/* NAV */
-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 18px;
+canvas{
+  background:#111;
+  border:3px solid #555;
+  border-radius:12px;
+  max-width:100%;
 }
-
-nav button {
-  border: 0;
-  padding: 12px 19px;
-  border-radius: 12px;
-  background: #252d52;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-nav button:hover {
-  background: #4b568a;
-}
-
-/* MAIN */
-main {
-  max-width: 1200px;
-  margin: auto;
-  padding: 30px 20px;
-}
-
-.title {
-  font-size: 28px;
-  margin-bottom: 20px;
-}
-
-/* FEATURED */
-.featured {
-  background: linear-gradient(135deg, #34247b, #182f67);
-  padding: 30px;
-  border-radius: 22px;
-  margin-bottom: 35px;
-  box-shadow: 0 15px 45px #0008;
-}
-
-.featured h2 {
-  font-size: 32px;
-  margin: 0 0 10px;
-}
-
-.featured p {
-  color: #c7cdea;
-}
-
-.play {
-  display: inline-block;
-  margin-top: 12px;
-  padding: 13px 23px;
-  background: white;
-  color: #111;
-  border-radius: 12px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-/* GAME GRID */
-.games {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 18px;
-}
-
-.game {
-  background: #151a30;
-  border: 1px solid #2b3354;
-  border-radius: 18px;
-  padding: 22px;
-  color: white;
-  text-decoration: none;
-  transition: .2s;
-}
-
-.game:hover {
-  transform: translateY(-6px);
-  border-color: #8276ff;
-  box-shadow: 0 12px 35px #0009;
-}
-
-.icon {
-  font-size: 48px;
-  margin-bottom: 12px;
-}
-
-.game h3 {
-  margin: 0 0 8px;
-  font-size: 20px;
-}
-
-.game p {
-  margin: 0;
-  color: #9da7ca;
-  font-size: 14px;
-}
-
-/* CATEGORY LABELS */
-.tag {
-  display: inline-block;
-  margin-top: 14px;
-  padding: 5px 9px;
-  border-radius: 8px;
-  background: #252d50;
-  color: #bfc7e8;
-  font-size: 12px;
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 40px;
-  color: #697292;
+#score{
+  font-size:22px;
+  margin:10px;
 }
 </style>
 </head>
@@ -179,384 +75,507 @@ footer {
 <body>
 
 <header>
+<h1>🎮 BIGZ ARCADE</h1>
+<div class="subtitle">Play games directly on the site</div>
 
-<div class="logo">
-🎮 BIGZ <span>ARCADE</span>
-</div>
-
-<div class="subtitle">
-Racing • Sports • Stunts • Multiplayer
-</div>
-
-<input
-class="search"
-id="search"
-placeholder="🔎 Search games..."
-oninput="searchGames()"
->
-
-<nav>
-
-<button onclick="showAll()">
-🏠 All Games
-</button>
-
-<button onclick="filterGames('Racing')">
-🏎️ Racing
-</button>
-
-<button onclick="filterGames('Bike')">
-🏍️ Bike
-</button>
-
-<button onclick="filterGames('Sports')">
-🏀 Sports
-</button>
-
-<button onclick="window.open('https://www.youtube.com/','_blank')">
-▶️ YouTube
-</button>
-
-</nav>
-
+<button onclick="home()">🏠 HOME</button>
+<button onclick="startSnake()">🐍 SNAKE</button>
+<button onclick="startDodge()">🚗 DODGE</button>
+<button onclick="startBasket()">🏀 BASKETBALL</button>
 </header>
 
 
-<main>
+<div id="games">
 
-<!-- FEATURED -->
-
-<div class="featured">
-
-<h2>🔥 FEATURED GAME</h2>
-
-<p>
-Race through crazy tracks, hit huge jumps, and try to beat your best time.
-</p>
-
-<a
-class="play"
-href="https://www.crazygames.com/game/polytrack"
-target="_blank">
-
-PLAY POLYTRACK →
-
-</a>
-
+<div class="card" onclick="startSnake()">
+<div class="icon">🐍</div>
+<h2>Snake</h2>
+<p>Eat the dots and get the highest score.</p>
 </div>
 
-
-<h2 class="title">
-🏆 GAME ZONE
-</h2>
-
-
-<div class="games" id="games">
-
-
-<!-- POLYTRACK -->
-
-<a
-class="game"
-data-category="Racing"
-href="https://www.crazygames.com/game/polytrack"
-target="_blank">
-
-<div class="icon">🏎️</div>
-
-<h3>PolyTrack</h3>
-
-<p>Fast racing, loops, jumps and custom tracks.</p>
-
-<div class="tag">Racing</div>
-
-</a>
-
-
-<!-- DRIFT HUNTERS -->
-
-<a
-class="game"
-data-category="Racing"
-href="https://www.crazygames.com/game/drift-hunters"
-target="_blank">
-
+<div class="card" onclick="startDodge()">
 <div class="icon">🚗</div>
-
-<h3>Drift Hunters</h3>
-
-<p>Customize cars and practice your drifting.</p>
-
-<div class="tag">Drifting</div>
-
-</a>
-
-
-<!-- RACING LIMITS -->
-
-<a
-class="game"
-data-category="Racing"
-href="https://www.crazygames.com/game/racing-limits"
-target="_blank">
-
-<div class="icon">🏁</div>
-
-<h3>Racing Limits</h3>
-
-<p>Race through traffic at high speed.</p>
-
-<div class="tag">Racing</div>
-
-</a>
-
-
-<!-- SKY RIDERS -->
-
-<a
-class="game"
-data-category="Racing"
-href="https://www.crazygames.com/game/sky-riders"
-target="_blank">
-
-<div class="icon">🌉</div>
-
-<h3>Sky Riders</h3>
-
-<p>Drive across wild tracks and huge ramps.</p>
-
-<div class="tag">Driving</div>
-
-</a>
-
-
-<!-- SMASH KARTS -->
-
-<a
-class="game"
-data-category="Racing"
-href="https://www.crazygames.com/game/smash-karts"
-target="_blank">
-
-<div class="icon">🏎️</div>
-
-<h3>Smash Karts</h3>
-
-<p>Fast multiplayer kart racing.</p>
-
-<div class="tag">Multiplayer</div>
-
-</a>
-
-
-<!-- ESCAPE ROAD -->
-
-<a
-class="game"
-data-category="Racing"
-href="https://www.crazygames.com/game/escape-road"
-target="_blank">
-
-<div class="icon">🚘</div>
-
-<h3>Escape Road</h3>
-
-<p>Drive through the city and dodge obstacles.</p>
-
-<div class="tag">Driving</div>
-
-</a>
-
-
-<!-- MOTO X3M -->
-
-<a
-class="game"
-data-category="Bike"
-href="https://www.crazygames.com/game/moto-x3m"
-target="_blank">
-
-<div class="icon">🏍️</div>
-
-<h3>Moto X3M</h3>
-
-<p>Bike racing with huge jumps and crazy tracks.</p>
-
-<div class="tag">Bike</div>
-
-</a>
-
-
-<!-- MOTO X3M POOL -->
-
-<a
-class="game"
-data-category="Bike"
-href="https://www.crazygames.com/game/moto-x3m-pool-party"
-target="_blank">
-
-<div class="icon">🏍️</div>
-
-<h3>Moto X3M Pool Party</h3>
-
-<p>Race through water slides and stunt tracks.</p>
-
-<div class="tag">Bike</div>
-
-</a>
-
-
-<!-- MOTO X3M SPOOKY -->
-
-<a
-class="game"
-data-category="Bike"
-href="https://www.crazygames.com/game/moto-x3m-spooky-land"
-target="_blank">
-
-<div class="icon">🏍️</div>
-
-<h3>Moto X3M Spooky Land</h3>
-
-<p>Spooky stunt tracks and crazy obstacles.</p>
-
-<div class="tag">Bike</div>
-
-</a>
-
-
-<!-- SPORTS -->
-
-<a
-class="game"
-data-category="Sports"
-href="https://www.crazygames.com/"
-target="_blank">
-
+<h2>Traffic Dodge</h2>
+<p>Dodge the cars and survive.</p>
+</div>
+
+<div class="card" onclick="startBasket()">
 <div class="icon">🏀</div>
+<h2>Basketball</h2>
+<p>Click to shoot and score.</p>
+</div>
 
-<h3>Sports Games</h3>
-
-<p>Jump into basketball, soccer and other sports.</p>
-
-<div class="tag">Sports</div>
-
-</a>
-
-
-<!-- CRAZYGAMES -->
-
-<a
-class="game"
-data-category="All"
-href="https://www.crazygames.com/"
-target="_blank">
-
-<div class="icon">🎮</div>
-
-<h3>More Games</h3>
-
-<p>Explore the full browser game collection.</p>
-
-<div class="tag">Arcade</div>
-
-</a>
-
-
-<!-- YOUTUBE -->
-
-<a
-class="game"
-data-category="All"
-href="https://www.youtube.com/"
-target="_blank">
-
-<div class="icon">▶️</div>
-
-<h3>YouTube</h3>
-
-<p>Watch videos and gaming content.</p>
-
-<div class="tag">Videos</div>
-
-</a>
-
+<div class="card" onclick="startRunner()">
+<div class="icon">🏃</div>
+<h2>Runner</h2>
+<p>Jump over obstacles.</p>
+</div>
 
 </div>
 
-</main>
 
+<div id="gameScreen">
 
-<footer>
+<button onclick="home()">⬅ BACK</button>
 
-BIGZ ARCADE 🎮
+<div id="score">Score: 0</div>
 
-</footer>
+<canvas id="canvas" width="700" height="450"></canvas>
+
+<div>
+<button onclick="restartGame()">🔄 Restart</button>
+</div>
+
+</div>
 
 
 <script>
 
-function searchGames() {
+let canvas=document.getElementById("canvas");
+let ctx=canvas.getContext("2d");
+let game="";
+let score=0;
+let interval;
 
-let search =
-document.getElementById("search")
-.value
-.toLowerCase();
 
-document
-.querySelectorAll(".game")
-.forEach(game => {
+/* HOME */
 
-let text =
-game.innerText.toLowerCase();
+function home(){
+ clearInterval(interval);
+ document.getElementById("games").style.display="grid";
+ document.getElementById("gameScreen").style.display="none";
+}
 
-game.style.display =
-text.includes(search)
-? "block"
-: "none";
 
+/* GAME SCREEN */
+
+function screen(){
+ document.getElementById("games").style.display="none";
+ document.getElementById("gameScreen").style.display="block";
+}
+
+
+/* ================= SNAKE ================= */
+
+let snake;
+let food;
+let dx;
+let dy;
+
+function startSnake(){
+
+screen();
+
+game="snake";
+
+snake=[
+{x:10,y:10},
+{x:9,y:10},
+{x:8,y:10}
+];
+
+dx=1;
+dy=0;
+
+score=0;
+
+food={
+x:Math.floor(Math.random()*34),
+y:Math.floor(Math.random()*21)
+};
+
+clearInterval(interval);
+
+interval=setInterval(snakeGame,120);
+
+}
+
+function snakeGame(){
+
+ctx.fillStyle="#111";
+ctx.fillRect(0,0,700,450);
+
+let head={
+x:snake[0].x+dx,
+y:snake[0].y+dy
+};
+
+if(
+head.x<0||
+head.x>=35||
+head.y<0||
+head.y>=22
+){
+
+startSnake();
+return;
+
+}
+
+snake.unshift(head);
+
+if(head.x===food.x && head.y===food.y){
+
+score++;
+
+food={
+x:Math.floor(Math.random()*34),
+y:Math.floor(Math.random()*21)
+};
+
+}else{
+
+snake.pop();
+
+}
+
+ctx.fillStyle="#55e878";
+
+snake.forEach(s=>{
+ctx.fillRect(s.x*20,s.y*20,18,18);
+});
+
+ctx.fillStyle="#ff5555";
+ctx.fillRect(food.x*20,food.y*20,18,18);
+
+document.getElementById("score").innerText="Score: "+score;
+
+}
+
+document.addEventListener("keydown",e=>{
+
+if(game!=="snake")return;
+
+if(e.key==="ArrowUp" && dy!==1){
+dx=0;dy=-1;
+}
+
+if(e.key==="ArrowDown" && dy!==-1){
+dx=0;dy=1;
+}
+
+if(e.key==="ArrowLeft" && dx!==1){
+dx=-1;dy=0;
+}
+
+if(e.key==="ArrowRight" && dx!==-1){
+dx=1;dy=0;
+}
+
+});
+
+
+/* ================= DODGE ================= */
+
+let player;
+let cars=[];
+
+function startDodge(){
+
+screen();
+
+game="dodge";
+
+player={
+x:330,
+y:390,
+w:40,
+h:40
+};
+
+cars=[];
+
+score=0;
+
+clearInterval(interval);
+
+interval=setInterval(dodgeGame,30);
+
+}
+
+function dodgeGame(){
+
+ctx.fillStyle="#202020";
+ctx.fillRect(0,0,700,450);
+
+ctx.fillStyle="#444";
+
+for(let x=100;x<700;x+=150){
+ctx.fillRect(x,0,8,450);
+}
+
+if(keys["ArrowLeft"]){
+player.x-=7;
+}
+
+if(keys["ArrowRight"]){
+player.x+=7;
+}
+
+player.x=Math.max(0,Math.min(660,player.x));
+
+if(Math.random()<0.025){
+
+cars.push({
+x:Math.random()*660,
+y:-50,
+w:40,
+h:50,
+speed:4+Math.random()*4
 });
 
 }
 
+cars.forEach(c=>{
 
-function filterGames(category) {
+c.y+=c.speed;
 
-document
-.querySelectorAll(".game")
-.forEach(game => {
+ctx.fillStyle="#e74c3c";
+ctx.fillRect(c.x,c.y,c.w,c.h);
 
-if (
-category === "All" ||
-game.dataset.category === category
-) {
+});
 
-game.style.display = "block";
+cars=cars.filter(c=>c.y<500);
 
-} else {
+ctx.fillStyle="#3da5ff";
+ctx.fillRect(player.x,player.y,player.w,player.h);
 
-game.style.display = "none";
+for(let c of cars){
+
+if(
+player.x<c.x+c.w &&
+player.x+player.w>c.x &&
+player.y<c.y+c.h &&
+player.y+player.h>c.y
+){
+
+startDodge();
+return;
+
+}
+
+}
+
+score++;
+
+document.getElementById("score").innerText=
+"Score: "+Math.floor(score/10);
+
+}
+
+let keys={};
+
+document.addEventListener("keydown",e=>{
+keys[e.key]=true;
+});
+
+document.addEventListener("keyup",e=>{
+keys[e.key]=false;
+});
+
+
+/* ================= BASKETBALL ================= */
+
+let ball;
+
+function startBasket(){
+
+screen();
+
+game="basket";
+
+score=0;
+
+ball={
+x:350,
+y:390
+};
+
+clearInterval(interval);
+
+interval=setInterval(basketGame,30);
+
+}
+
+function basketGame(){
+
+ctx.fillStyle="#c97b38";
+ctx.fillRect(0,0,700,450);
+
+ctx.fillStyle="white";
+ctx.fillRect(0,400,700,5);
+
+ctx.strokeStyle="white";
+ctx.lineWidth=5;
+
+ctx.strokeRect(300,60,100,80);
+
+ctx.beginPath();
+ctx.arc(350,140,35,0,Math.PI*2);
+ctx.stroke();
+
+ctx.fillStyle="#ff8c00";
+
+ctx.beginPath();
+ctx.arc(ball.x,ball.y,18,0,Math.PI*2);
+ctx.fill();
+
+ctx.fillStyle="white";
+ctx.font="22px Arial";
+ctx.fillText("Click the ball to shoot!",220,430);
+
+document.getElementById("score").innerText=
+"Score: "+score;
+
+}
+
+canvas.addEventListener("click",function(e){
+
+if(game!=="basket")return;
+
+let rect=canvas.getBoundingClientRect();
+
+let x=e.clientX-rect.left;
+let y=e.clientY-rect.top;
+
+let distance=Math.sqrt(
+(x-ball.x)**2+(y-ball.y)**2
+);
+
+if(distance<40){
+
+if(ball.y<180){
+
+score++;
+
+}
+
+ball.x=350;
+ball.y=390;
 
 }
 
 });
 
-document.getElementById("search").value = "";
+
+/* ================= RUNNER ================= */
+
+let runner;
+let obstacles=[];
+
+function startRunner(){
+
+screen();
+
+game="runner";
+
+runner={
+x:80,
+y:350,
+vy:0,
+ground:true
+};
+
+obstacles=[];
+
+score=0;
+
+clearInterval(interval);
+
+interval=setInterval(runnerGame,30);
 
 }
 
+function runnerGame(){
 
-function showAll() {
+ctx.fillStyle="#18233b";
+ctx.fillRect(0,0,700,450);
 
-document
-.querySelectorAll(".game")
-.forEach(game => {
+ctx.fillStyle="#4caf50";
+ctx.fillRect(0,400,700,50);
 
-game.style.display = "block";
+runner.vy+=0.7;
+runner.y+=runner.vy;
+
+if(runner.y>=350){
+
+runner.y=350;
+runner.vy=0;
+runner.ground=true;
+
+}
+
+if(Math.random()<0.025){
+
+obstacles.push({
+x:700,
+y:360,
+w:35,
+h:40
+});
+
+}
+
+obstacles.forEach(o=>{
+o.x-=6;
+});
+
+obstacles=obstacles.filter(o=>o.x>-50);
+
+ctx.fillStyle="#4da6ff";
+ctx.fillRect(runner.x,runner.y,40,50);
+
+ctx.fillStyle="#ff5555";
+
+obstacles.forEach(o=>{
+ctx.fillRect(o.x,o.y,o.w,o.h);
+});
+
+for(let o of obstacles){
+
+if(
+runner.x<o.x+o.w &&
+runner.x+40>o.x &&
+runner.y<o.y+o.h &&
+runner.y+50>o.y
+){
+
+startRunner();
+return;
+
+}
+
+}
+
+score++;
+
+document.getElementById("score").innerText=
+"Score: "+Math.floor(score/10);
+
+}
+
+document.addEventListener("keydown",e=>{
+
+if(game==="runner" &&
+(e.key===" " || e.key==="ArrowUp") &&
+runner.ground){
+
+runner.vy=-13;
+runner.ground=false;
+
+}
 
 });
 
-document.getElementById("search").value = "";
+
+/* RESTART */
+
+function restartGame(){
+
+if(game==="snake")startSnake();
+if(game==="dodge")startDodge();
+if(game==="basket")startBasket();
+if(game==="runner")startRunner();
 
 }
 
