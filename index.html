@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>BigZ Arcade</title>
+<title>BIGZ ARCADE</title>
 
 <style>
 * {
@@ -14,104 +14,105 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #080b16;
+  background: #070914;
   color: white;
 }
 
-/* TOP BAR */
+/* HEADER */
 header {
-  background: linear-gradient(135deg, #111936, #21104a);
-  padding: 25px;
-  border-bottom: 2px solid #343b67;
+  background: linear-gradient(135deg, #121936, #32145c);
+  padding: 30px 25px;
+  border-bottom: 2px solid #3c4675;
 }
 
 .logo {
-  font-size: 34px;
+  font-size: 42px;
   font-weight: 900;
 }
 
 .logo span {
-  color: #7c6cff;
+  color: #8b7cff;
 }
 
 .subtitle {
-  color: #aeb6d8;
-  margin-top: 5px;
+  color: #aeb7dc;
+  margin-top: 6px;
+  font-size: 17px;
 }
 
 /* SEARCH */
 .search {
-  margin-top: 20px;
+  margin-top: 22px;
   width: 100%;
-  max-width: 650px;
-  padding: 15px 20px;
+  max-width: 700px;
+  padding: 16px 20px;
   border-radius: 14px;
-  border: 1px solid #343b67;
-  background: #11162a;
+  border: 1px solid #394266;
+  background: #10152a;
   color: white;
   font-size: 16px;
   outline: none;
 }
 
-/* NAVIGATION */
+/* NAV */
 nav {
   display: flex;
-  gap: 10px;
   flex-wrap: wrap;
+  gap: 10px;
   margin-top: 18px;
 }
 
 nav button {
   border: 0;
-  padding: 11px 18px;
+  padding: 12px 19px;
   border-radius: 12px;
-  background: #252c4d;
+  background: #252d52;
   color: white;
-  cursor: pointer;
   font-weight: bold;
+  cursor: pointer;
 }
 
 nav button:hover {
-  background: #3a4370;
+  background: #4b568a;
 }
 
 /* MAIN */
 main {
-  max-width: 1150px;
+  max-width: 1200px;
   margin: auto;
   padding: 30px 20px;
 }
 
-.section-title {
-  font-size: 26px;
-  margin-bottom: 18px;
+.title {
+  font-size: 28px;
+  margin-bottom: 20px;
 }
 
-/* FEATURE */
-.feature {
-  background: linear-gradient(135deg, #30246b, #172a58);
-  border-radius: 22px;
+/* FEATURED */
+.featured {
+  background: linear-gradient(135deg, #34247b, #182f67);
   padding: 30px;
+  border-radius: 22px;
   margin-bottom: 35px;
-  box-shadow: 0 10px 40px #0006;
+  box-shadow: 0 15px 45px #0008;
 }
 
-.feature h2 {
-  font-size: 30px;
+.featured h2 {
+  font-size: 32px;
   margin: 0 0 10px;
 }
 
-.feature p {
-  color: #c5cae8;
+.featured p {
+  color: #c7cdea;
 }
 
 .play {
   display: inline-block;
-  margin-top: 10px;
-  padding: 13px 22px;
-  border-radius: 12px;
+  margin-top: 12px;
+  padding: 13px 23px;
   background: white;
   color: #111;
+  border-radius: 12px;
   text-decoration: none;
   font-weight: bold;
 }
@@ -119,46 +120,58 @@ main {
 /* GAME GRID */
 .games {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 18px;
 }
 
 .game {
-  background: #151a2d;
-  border: 1px solid #292f4c;
+  background: #151a30;
+  border: 1px solid #2b3354;
   border-radius: 18px;
-  padding: 20px;
-  text-decoration: none;
+  padding: 22px;
   color: white;
+  text-decoration: none;
   transition: .2s;
 }
 
 .game:hover {
-  transform: translateY(-5px);
-  border-color: #7771ff;
-  box-shadow: 0 10px 30px #0008;
+  transform: translateY(-6px);
+  border-color: #8276ff;
+  box-shadow: 0 12px 35px #0009;
 }
 
 .icon {
-  font-size: 50px;
+  font-size: 48px;
   margin-bottom: 12px;
 }
 
 .game h3 {
-  margin: 0 0 7px;
+  margin: 0 0 8px;
+  font-size: 20px;
 }
 
 .game p {
   margin: 0;
-  color: #9da6c9;
+  color: #9da7ca;
   font-size: 14px;
+}
+
+/* CATEGORY LABELS */
+.tag {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 5px 9px;
+  border-radius: 8px;
+  background: #252d50;
+  color: #bfc7e8;
+  font-size: 12px;
 }
 
 /* FOOTER */
 footer {
   text-align: center;
-  padding: 35px;
-  color: #737b9d;
+  padding: 40px;
+  color: #697292;
 }
 </style>
 </head>
@@ -167,126 +180,384 @@ footer {
 
 <header>
 
-<div class="logo">🎮 BIGZ <span>ARCADE</span></div>
-<div class="subtitle">Your gaming zone</div>
+<div class="logo">
+🎮 BIGZ <span>ARCADE</span>
+</div>
+
+<div class="subtitle">
+Racing • Sports • Stunts • Multiplayer
+</div>
 
 <input
-  class="search"
-  id="search"
-  placeholder="🔎 Search games..."
-  oninput="searchGames()"
+class="search"
+id="search"
+placeholder="🔎 Search games..."
+oninput="searchGames()"
 >
 
 <nav>
-<button onclick="showAll()">🏠 Home</button>
-<button onclick="filterCategory('game')">🎮 Games</button>
+
+<button onclick="showAll()">
+🏠 All Games
+</button>
+
+<button onclick="filterGames('Racing')">
+🏎️ Racing
+</button>
+
+<button onclick="filterGames('Bike')">
+🏍️ Bike
+</button>
+
+<button onclick="filterGames('Sports')">
+🏀 Sports
+</button>
+
 <button onclick="window.open('https://www.youtube.com/','_blank')">
 ▶️ YouTube
 </button>
+
 </nav>
 
 </header>
 
+
 <main>
 
 <!-- FEATURED -->
-<div class="feature">
-<h2>🔥 Featured</h2>
-<p>Jump into some games and explore the arcade.</p>
+
+<div class="featured">
+
+<h2>🔥 FEATURED GAME</h2>
+
+<p>
+Race through crazy tracks, hit huge jumps, and try to beat your best time.
+</p>
 
 <a
 class="play"
-href="https://www.crazygames.com/"
+href="https://www.crazygames.com/game/polytrack"
 target="_blank">
-PLAY NOW →
+
+PLAY POLYTRACK →
+
 </a>
+
 </div>
 
-<h2 class="section-title">🎮 Game Zone</h2>
+
+<h2 class="title">
+🏆 GAME ZONE
+</h2>
+
 
 <div class="games" id="games">
 
-<a class="game" href="https://www.crazygames.com/" target="_blank">
+
+<!-- POLYTRACK -->
+
+<a
+class="game"
+data-category="Racing"
+href="https://www.crazygames.com/game/polytrack"
+target="_blank">
+
+<div class="icon">🏎️</div>
+
+<h3>PolyTrack</h3>
+
+<p>Fast racing, loops, jumps and custom tracks.</p>
+
+<div class="tag">Racing</div>
+
+</a>
+
+
+<!-- DRIFT HUNTERS -->
+
+<a
+class="game"
+data-category="Racing"
+href="https://www.crazygames.com/game/drift-hunters"
+target="_blank">
+
+<div class="icon">🚗</div>
+
+<h3>Drift Hunters</h3>
+
+<p>Customize cars and practice your drifting.</p>
+
+<div class="tag">Drifting</div>
+
+</a>
+
+
+<!-- RACING LIMITS -->
+
+<a
+class="game"
+data-category="Racing"
+href="https://www.crazygames.com/game/racing-limits"
+target="_blank">
+
+<div class="icon">🏁</div>
+
+<h3>Racing Limits</h3>
+
+<p>Race through traffic at high speed.</p>
+
+<div class="tag">Racing</div>
+
+</a>
+
+
+<!-- SKY RIDERS -->
+
+<a
+class="game"
+data-category="Racing"
+href="https://www.crazygames.com/game/sky-riders"
+target="_blank">
+
+<div class="icon">🌉</div>
+
+<h3>Sky Riders</h3>
+
+<p>Drive across wild tracks and huge ramps.</p>
+
+<div class="tag">Driving</div>
+
+</a>
+
+
+<!-- SMASH KARTS -->
+
+<a
+class="game"
+data-category="Racing"
+href="https://www.crazygames.com/game/smash-karts"
+target="_blank">
+
+<div class="icon">🏎️</div>
+
+<h3>Smash Karts</h3>
+
+<p>Fast multiplayer kart racing.</p>
+
+<div class="tag">Multiplayer</div>
+
+</a>
+
+
+<!-- ESCAPE ROAD -->
+
+<a
+class="game"
+data-category="Racing"
+href="https://www.crazygames.com/game/escape-road"
+target="_blank">
+
+<div class="icon">🚘</div>
+
+<h3>Escape Road</h3>
+
+<p>Drive through the city and dodge obstacles.</p>
+
+<div class="tag">Driving</div>
+
+</a>
+
+
+<!-- MOTO X3M -->
+
+<a
+class="game"
+data-category="Bike"
+href="https://www.crazygames.com/game/moto-x3m"
+target="_blank">
+
+<div class="icon">🏍️</div>
+
+<h3>Moto X3M</h3>
+
+<p>Bike racing with huge jumps and crazy tracks.</p>
+
+<div class="tag">Bike</div>
+
+</a>
+
+
+<!-- MOTO X3M POOL -->
+
+<a
+class="game"
+data-category="Bike"
+href="https://www.crazygames.com/game/moto-x3m-pool-party"
+target="_blank">
+
+<div class="icon">🏍️</div>
+
+<h3>Moto X3M Pool Party</h3>
+
+<p>Race through water slides and stunt tracks.</p>
+
+<div class="tag">Bike</div>
+
+</a>
+
+
+<!-- MOTO X3M SPOOKY -->
+
+<a
+class="game"
+data-category="Bike"
+href="https://www.crazygames.com/game/moto-x3m-spooky-land"
+target="_blank">
+
+<div class="icon">🏍️</div>
+
+<h3>Moto X3M Spooky Land</h3>
+
+<p>Spooky stunt tracks and crazy obstacles.</p>
+
+<div class="tag">Bike</div>
+
+</a>
+
+
+<!-- SPORTS -->
+
+<a
+class="game"
+data-category="Sports"
+href="https://www.crazygames.com/"
+target="_blank">
+
+<div class="icon">🏀</div>
+
+<h3>Sports Games</h3>
+
+<p>Jump into basketball, soccer and other sports.</p>
+
+<div class="tag">Sports</div>
+
+</a>
+
+
+<!-- CRAZYGAMES -->
+
+<a
+class="game"
+data-category="All"
+href="https://www.crazygames.com/"
+target="_blank">
+
 <div class="icon">🎮</div>
-<h3>CrazyGames</h3>
-<p>Hundreds of browser games</p>
+
+<h3>More Games</h3>
+
+<p>Explore the full browser game collection.</p>
+
+<div class="tag">Arcade</div>
+
 </a>
 
-<a class="game" href="https://poki.com/" target="_blank">
-<div class="icon">🕹️</div>
-<h3>Poki</h3>
-<p>Play games instantly</p>
-</a>
 
-<a class="game" href="https://www.coolmathgames.com/" target="_blank">
-<div class="icon">🧠</div>
-<h3>Coolmath Games</h3>
-<p>Puzzles and arcade games</p>
-</a>
+<!-- YOUTUBE -->
 
-<a class="game" href="https://www.friv.com/" target="_blank">
-<div class="icon">⭐</div>
-<h3>Friv</h3>
-<p>Classic browser games</p>
-</a>
+<a
+class="game"
+data-category="All"
+href="https://www.youtube.com/"
+target="_blank">
 
-<a class="game" href="https://www.google.com/search?q=browser+games" target="_blank">
-<div class="icon">🔎</div>
-<h3>Find Games</h3>
-<p>Search for more games</p>
-</a>
-
-<a class="game" href="https://www.youtube.com/" target="_blank">
 <div class="icon">▶️</div>
+
 <h3>YouTube</h3>
-<p>Watch videos</p>
+
+<p>Watch videos and gaming content.</p>
+
+<div class="tag">Videos</div>
+
 </a>
+
 
 </div>
 
 </main>
 
+
 <footer>
-BIGZ ARCADE • Have fun 🎮
+
+BIGZ ARCADE 🎮
+
 </footer>
+
 
 <script>
 
 function searchGames() {
 
-  let search =
-    document.getElementById("search")
-    .value
-    .toLowerCase();
+let search =
+document.getElementById("search")
+.value
+.toLowerCase();
 
-  document
-    .querySelectorAll(".game")
-    .forEach(game => {
+document
+.querySelectorAll(".game")
+.forEach(game => {
 
-      let text =
-        game.innerText.toLowerCase();
+let text =
+game.innerText.toLowerCase();
 
-      game.style.display =
-        text.includes(search)
-        ? "block"
-        : "none";
+game.style.display =
+text.includes(search)
+? "block"
+: "none";
 
-    });
+});
+
 }
+
+
+function filterGames(category) {
+
+document
+.querySelectorAll(".game")
+.forEach(game => {
+
+if (
+category === "All" ||
+game.dataset.category === category
+) {
+
+game.style.display = "block";
+
+} else {
+
+game.style.display = "none";
+
+}
+
+});
+
+document.getElementById("search").value = "";
+
+}
+
 
 function showAll() {
 
-  document
-    .querySelectorAll(".game")
-    .forEach(game => {
-      game.style.display = "block";
-    });
+document
+.querySelectorAll(".game")
+.forEach(game => {
 
-  document.getElementById("search").value = "";
-}
+game.style.display = "block";
 
-function filterCategory(category) {
-  showAll();
+});
+
+document.getElementById("search").value = "";
+
 }
 
 </script>
